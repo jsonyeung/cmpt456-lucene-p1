@@ -90,7 +90,7 @@ public class IndexFiles {
       System.out.println("Indexing to directory '" + indexPath + "'...");
 
       Directory dir = FSDirectory.open(Paths.get(indexPath));
-      Analyzer analyzer = new StandardAnalyzer();
+      Analyzer analyzer = new StandardAnalyzer(); // new CMPT465Analyzer();
       IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
 
       if (create) {
@@ -124,10 +124,10 @@ public class IndexFiles {
 
       Date end = new Date();
       System.out.println(end.getTime() - start.getTime() + " total milliseconds");
-
+      
     } catch (IOException e) {
       System.out.println(" caught a " + e.getClass() +
-       "\n with message: " + e.getMessage());
+      "\n with message: " + e.getMessage());
     }
   }
 

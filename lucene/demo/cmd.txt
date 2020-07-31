@@ -1,0 +1,33 @@
+# HtmlIndexFiles.java
+ant -f lucene/demo/build.xml &&
+ant -f lucene/demo/build.xml -Ddocs=lucene/demo/data/wiki-small/en/articles/ run-html-indexing-demo
+
+ant -f lucene/demo/build.xml &&
+ant -f lucene/demo/build.xml -Ddocs=lucene/demo/data-test/ run-html-indexing-demo
+
+
+# SimpleMetrics.java
+ant -f lucene/demo/build.xml &&
+ant -f lucene/demo/build.xml -Ddocs=lucene/demo/data/wiki-small/en/articles/ run-indexing-demo &&
+ant -f lucene/demo/build.xml run-simple-metrics-demo
+
+
+# TFIDFHtmlIndexFiles.java
+ant -f lucene/demo/build.xml &&
+ant -f lucene/demo/build.xml -Ddocs=lucene/demo/data/wiki-small/en/articles/run-tfidf-html
+
+ant -f lucene/demo/build.xml &&
+ant -f lucene/demo/build.xml -Ddocs=lucene/demo/data-test/ run-tfidf-html
+
+
+# TFIDFSearchFiles.java
+ant -f lucene/demo/build.xml &&
+ant -f lucene/demo/build.xml -Ddocs=lucene/demo/data/wiki-small/en/articles/ run-tfidf-indexing &&
+ant -f lucene/demo/build.xml run-tfidf-search
+
+ant -f lucene/demo/build.xml &&
+ant -f lucene/demo/build.xml run-tfidf-search
+
+
+# SearchFiles.java
+ant -f lucene/demo/build.xml run-search-index-demo
