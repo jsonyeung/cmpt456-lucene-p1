@@ -3,6 +3,7 @@ package org.apache.lucene.demo;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.File;
+import java.io.Reader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +16,6 @@ import org.apache.lucene.analysis.standard.StandardFilter;
 import org.apache.lucene.analysis.en.PorterStemFilter;
 import org.apache.lucene.analysis.core.LowerCaseFilter;
 import org.apache.lucene.analysis.CharArraySet;
-import org.apache.lucene.util.Version;
 
 class CMPT456Analyzer extends Analyzer {
   private final static String STOP_PATH = "/lucene-solr/stopwords.txt";
@@ -44,6 +44,13 @@ class CMPT456Analyzer extends Analyzer {
     res = new StopFilter(res, stopSet);
     res = new PorterStemFilter(res);
 
-    return new TokenStreamComponents(src, res);
+    return new TokenStreamComponents(src, res) {
+      @Override
+      protected void setReader(final Reader reader) {
+        // set max token
+        src.setMaxTokenLength(255);
+        super.setReader(reader);
+      }
+    };
   }
 }
